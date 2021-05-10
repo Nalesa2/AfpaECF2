@@ -11,13 +11,13 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
        $stmt = $db->prepare("
        INSERT INTO article 
-        (titreArticle, dateCreationArticle, statueArticle, contenuArticle, idCategorie) 
-        VALUES (:titreArticle, CURDATE(), :statueArticle, :contenuArticle, 
+        (titreArticle, dateCreationArticle, statutArticle, contenuArticle, idCategorie) 
+        VALUES (:titreArticle, CURDATE(), :statutArticle, :contenuArticle, 
         (SELECT idCategorie FROM categorie WHERE nomCategorie = :nomCategorie));
         ");
        $stmt->execute([
             ':titreArticle' => htmlspecialchars($_POST["titreArticle"]), 
-            ':statueArticle' => htmlspecialchars($_POST["statueArticle"]), 
+            ':statutArticle' => htmlspecialchars($_POST["statutArticle"]), 
             ':contenuArticle' => htmlspecialchars($_POST["contenuArticle"]), 
             ':nomCategorie' => htmlspecialchars($_POST["nomCategorie"])
        ]);
@@ -74,7 +74,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
                                     <div class="form-group w-50">
                                         <label for="">Statut Article</label><br/>
-                                        <select id="" name="statueArticle">
+                                        <select id="" name="statutArticle">
                                             <option>Publié</option>
                                             <option>Brouillon</option>
                                             <option>Corbeille</option>

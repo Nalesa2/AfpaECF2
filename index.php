@@ -27,7 +27,7 @@ $article = $stmt->fetchAll();
                 <tr>
                     <th>Titre</th>
                     <th>Date création</th>
-                    <th>Statue</th>
+                    <th>Statut</th>
                     <th>Catégorie</th>
                     <th>Tags</th>
                     <th>Editer</th>
@@ -37,7 +37,7 @@ $article = $stmt->fetchAll();
                 <tr>
                     <td><?= $value["titreArticle"] ?></td>
                     <td><?= afficheDateFR($value["dateCreationArticle"]) ?></td>
-                    <td><?= $value["statueArticle"] ?></td>
+                    <td><?= $value["statutArticle"] ?></td>
                     <td><?= $value["nomCategorie"] ?></td>
                     <td></td>
                     <td>

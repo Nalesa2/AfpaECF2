@@ -74,7 +74,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                     <em>Titre: </em> <?= $article["titreArticle"] ?><br/>
                     <em>Date création: </em> <?= afficheDateFR($article["dateCreationArticle"]) ?><br/>
                     <em>Catégorie: </em> <?= $article["nomCategorie"] ?><br/>
-                    <em>statue :</em> <?= $article["statueArticle"] ?><br/>
+                    <em>Statut :</em> <?= $article["statutArticle"] ?><br/>
                 </p>
                 <div class="d-flex justify-content-around">
                     <form method="POST">

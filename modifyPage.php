@@ -9,8 +9,6 @@ if(validGET("id")){
         ':idArticleToEdit' => $idArticleToEdit
      ]);
      $blogEdit = $stmt->fetchAll(); 
-    //  print_r($blogEdit);
-
      $valueIdArticle = $blogEdit[0]['idArticle'];
      $valueTitre = $blogEdit[0]['titreArticle'];
      $valueArea = $blogEdit[0]['contenuArticle'];
@@ -18,47 +16,23 @@ if(validGET("id")){
 }
 
 $errors = [];
-// On verifie que la methode post existe, si elle existe on execute la requete
-// if($_SERVER["REQUEST_METHOD"] === "POST"){
-//     if(existPOST("titreArticle")){
-//        $sql = "INSERT INTO article 
-//        (titreArticle, dateCreationArticle, datePublication, statueArticle, contenuArticle) 
-//        VALUES (:titreArticle, '2018/10/10', '2019/10/10', 'Publié', 'area')";
-
-//        $stmt = $db->prepare($sql);
-//        $res = $stmt->execute([
-//           ":titreArticle" => htmlspecialchars($_POST["titreArticle"])
-//           //":contenuArticle" => htmlspecialchars($_POST["contenuArticle"]),
-//           //"dateCreationArticle" => $_POST["dateCreationArticle"],
-//           //"statutArticle" => htmlspecialchars($_POST["statutArticle"]),
-//           //":idCategorie" => htmlspecialchars($_POST["idCategorie"]),
-//           //':idTag' => htmlspecialchars($_POST["idTag"])
-//        ]);
-
- 
-//             redirectTo("index.php");
- 
-//        }else{
-//            $errors[] = "Veuillez remplir tous les champs";
-//        }
-//    }
 
    if($_SERVER["REQUEST_METHOD"] === "POST"){
     if(isset($_POST["titreArticle"])){
-        $statueArticle = "Publié";
+        $statutArticle = "Publié";
         
 
         $stmt = $db->prepare("
         UPDATE article SET 
         titreArticle = :titreArticle, 
         contenuArticle = :contenuArticle, 
-        statueArticle = :statueArticle 
+        statutArticle = :statutArticle 
         WHERE idArticle = :idArticle;
         ");
         $stmt->execute([
             ':titreArticle' => htmlspecialchars($_POST["titreArticle"]), 
             ':contenuArticle' => htmlspecialchars($_POST["contenuArticle"]), 
-            ':statueArticle' => $statueArticle, 
+            ':statutArticle' => $statutArticle, 
             ':idArticle' => htmlspecialchars($_POST["idArticle"])
          ]);
 
@@ -112,8 +86,8 @@ $errors = [];
                             </div>
 
                             <div class="form-group w-50">
-                                <label for="input-statutArticle">Statue Article</label><br/>
-                                <select id="input-statutArticle" name="statueArticle">
+                                <label for="input-statutArticle">Statut Article</label><br/>
+                                <select id="input-statutArticle" name="statutArticle">
                                     <option>Publié</option>
                                     <option>Brouillon</option>
                                     <option>Corbeille</option>
